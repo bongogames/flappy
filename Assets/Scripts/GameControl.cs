@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class GameControl : MonoBehaviour
 {
+	public AudioSource scoreSound;
+	public AudioSource dieSound;
 	public static GameControl instance;
 	public Text scoreText;
 	public GameObject gameOverText;
@@ -36,15 +38,18 @@ public class GameControl : MonoBehaviour
 	}
 
 	public void BirdScored (){
-		Debug.Log ("Score");
+		//Debug.Log ("Score");
 
 		if (!gameOver) {
+			scoreSound.Play();
+
 			score++;
 			scoreText.text = "score:" + score.ToString ();
 		}
 	}
 	public void BirdDied ()
 	{
+		dieSound.Play();
 		gameOverText.SetActive (true);
 		gameOver = true;	
 	}

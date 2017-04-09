@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bird : MonoBehaviour {
 
 	public float upForce = 200f;
+	public AudioSource flapSoundSource;
 
 	private bool isDead = false;
 	private Rigidbody2D rb2d;
@@ -25,6 +26,7 @@ public class Bird : MonoBehaviour {
 				anim.SetTrigger ("Flap");
 				rb2d.velocity = Vector2.zero;    
 				rb2d.AddForce (new Vector2 (0, upForce));
+				flapSoundSource.Play ();
 			}
 		}
 	}
